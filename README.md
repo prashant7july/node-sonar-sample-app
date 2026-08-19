@@ -33,8 +33,10 @@ npm install
 ### 2. Run the app locally
 ```bash
 npm start
-# visit http://localhost:3000  -> {"message":"Node Sonar Sample App is running"}
-# visit http://localhost:3000/add/4/5 -> {"result":9}
+curl http://localhost:3000
+{"message":"Node Sonar Sample App is running"}
+curl http://localhost:3000/add/4/5 
+{"result":9}
 ```
 
 ### 3. Run tests + generate coverage
@@ -42,6 +44,29 @@ npm start
 npm test
 ```
 This creates `coverage/lcov.info` — the file Sonar reads for coverage %.
+```sh
+> node-sonar-sample-app@1.0.0 test
+> jest --coverage
+
+ PASS  test/app.test.js
+  add()
+    ✓ adds two positive numbers (3 ms)
+    ✓ adds negative numbers
+  divide()
+    ✓ divides two numbers
+    ✓ throws on divide by zero (8 ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |   68.75 |      100 |      40 |   68.75 |                   
+ app.js   |   68.75 |      100 |      40 |   68.75 | 7,11,27-29        
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        0.85 s
+```
 
 ## Step-by-step: push to GitHub and wire up CI
 
